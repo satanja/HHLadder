@@ -14,7 +14,7 @@ public class Match {
         this.fencerB = fencerB;
     }
 
-    public Fencer getWinner() throws IllegalStateException {
+    public ELOFencer getWinner() throws IllegalStateException {
         if (scoreA > scoreB) {
             return fencerA;
         } else if (scoreB > scoreA) {
@@ -23,7 +23,7 @@ public class Match {
         throw new IllegalStateException("Fencers have same number of touches: " + scoreA + ", " + scoreB);
     }
 
-    public Fencer getLoser() throws IllegalStateException {
+    public ELOFencer getLoser() throws IllegalStateException {
         if (scoreA < scoreB) {
             return fencerA;
         } else if (scoreB < scoreA) {
