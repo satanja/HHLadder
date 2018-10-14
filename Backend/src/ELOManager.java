@@ -1,4 +1,4 @@
-public abstract class ELOManager {
+public abstract class ELOManager implements MMRCreator {
 
     public abstract void updateMMR(Match match);
 

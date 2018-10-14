@@ -18,4 +18,8 @@ public class SimpleELOManager extends ELOManager {
         return (winner.getMMR() - 400) / (loser.getBoutsFenced());
     }
 
+    @Override
+    public int getInitialMMR() {
+        return 1000;
+    }
 }

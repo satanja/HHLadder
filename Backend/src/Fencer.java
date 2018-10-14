@@ -17,11 +17,10 @@ public class Fencer implements ELOFencer {
     // The number of bouts the fencer fenced
     private int boutsFenced;
 
-    public Fencer(String name, Weapon weapon) {
+    public Fencer(String name, Weapon weapon, MMRCreator mmrCreator) {
         this.name = name;
         this.weapon = weapon;
-        // mmr start point is 1000
-        mmr = 1000;
+        mmr = mmrCreator.getInitialMMR();
         boutsFenced = 0;
     }
 
