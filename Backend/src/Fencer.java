@@ -20,7 +20,6 @@ public class Fencer implements ELOFencer {
     public Fencer(String name, Weapon weapon, MMRCreator mmrCreator) {
         this.name = name;
         this.weapon = weapon;
-        mmr = mmrCreator.getInitialMMR();
         boutsFenced = 0;
     }
 
