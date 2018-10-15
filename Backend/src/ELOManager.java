@@ -1,11 +1,11 @@
 /**
  * @author S.A. Tanja
  */
-public abstract class ELOManager implements MMRCreator {
+public abstract class ELOManager {
 
     /**
      * Updates the MMR of both fencers of the {@code match}
-     * @param match
+     * @param match The match played
      */
     public void updateMMR(Match match) {
         ELOFencer winner = match.getWinner();
@@ -13,6 +13,13 @@ public abstract class ELOManager implements MMRCreator {
         winner.setMMR(calculateWinnerMMR(winner, loser));
         loser.setMMR(calculateLoserMMR(winner, loser));
     }
+
+    /**
+     * Gets the initial MMR of the fencer (possibly taking its position in the ladder into account)
+     * @param position The position of the fencer in the ladder directly after being added
+     * @return The initial mmr of the fencer
+     */
+    public abstract int getInitialMMR(int position);
 
 
     /**

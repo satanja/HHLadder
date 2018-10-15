@@ -17,7 +17,7 @@ public class Fencer implements ELOFencer {
     // The number of bouts the fencer fenced
     private int boutsFenced;
 
-    public Fencer(String name, Weapon weapon, MMRCreator mmrCreator) {
+    public Fencer(String name, Weapon weapon) {
         this.name = name;
         this.weapon = weapon;
         boutsFenced = 0;
