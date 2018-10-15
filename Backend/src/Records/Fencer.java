@@ -67,10 +67,6 @@ public class Fencer implements ELOFencer, Comparable<Fencer> {
         this.mmr = newMMR;
     }
 
-    public static void main(String[] args) {
-
-    }
-
     // To sort the ladder based on Fencer's MMR
     @Override
     public int compareTo(Fencer fencer) {
