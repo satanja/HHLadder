@@ -1,3 +1,5 @@
+package Weapon;
+
 public class Sabre extends Weapon {
 
     public Sabre() {

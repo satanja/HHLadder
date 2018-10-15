@@ -1,3 +1,7 @@
+package Records;
+
+import ELO.ELOFencer;
+
 public class Match {
 
     private ELOFencer fencerA;

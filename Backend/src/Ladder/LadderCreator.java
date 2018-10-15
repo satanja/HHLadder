@@ -1,10 +1,18 @@
+package Ladder;
+
+import ELO.ELOManager;
+import Weapon.Epee;
+import Weapon.Foil;
+import Weapon.Sabre;
+import Weapon.Weapon;
+
 public class LadderCreator {
 
     /**
-     * Creates a Ladder for a specific weapon
+     * Creates a Ladder.Ladder for a specific weapon
      * @param weapon The weapon to create a ladder for
-     * @param eloManager The ELOManager of the ladder
-     * @return A Ladder object with the right weapon.
+     * @param eloManager The ELO of the ladder
+     * @return A Ladder.Ladder object with the right weapon.
      * @throws IllegalArgumentException if an invalid weapon type is entered
      */
     public Ladder createLadder(String weapon, ELOManager eloManager) throws IllegalArgumentException {

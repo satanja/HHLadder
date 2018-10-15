@@ -1,3 +1,9 @@
+package Ladder;
+
+import ELO.ELOManager;
+import Records.Fencer;
+import Weapon.Weapon;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,7 +11,7 @@ public class Ladder {
 
     /*
      * Rep. inv.:
-     * - All {@code Fencer}s in {@code fencers} use the weapon {@code weapon}
+     * - All {@code Records.Fencer}s in {@code fencers} use the weapon {@code weapon}
      * - The index of the fencer in {@code fencers} is their position on the ladder.
      */
 
@@ -25,10 +31,10 @@ public class Ladder {
     }
 
     /**
-     * Adds a {@code Fencer} to the ladder if:
+     * Adds a {@code Records.Fencer} to the ladder if:
      * <ul>
-     *     <li>The {@code Fencer} uses the same weapon as the {@code Ladder}</li>
-     *     <li>There does not already exist a {@code Fencer} with the same name</li>
+     *     <li>The {@code Records.Fencer} uses the same weapon as the {@code Ladder.Ladder}</li>
+     *     <li>There does not already exist a {@code Records.Fencer} with the same name</li>
      * </ul>
      * Also sets the initial MMR of the fencer
      * @return true when the {@code fencer} has the same weapon and a fencer with the same name does not exist.

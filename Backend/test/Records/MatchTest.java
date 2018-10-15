@@ -1,3 +1,11 @@
+package Records;
+
+import ELO.ELOFencer;
+import Records.Fencer;
+import Records.Match;
+import Weapon.Epee;
+import Weapon.Foil;
+import Weapon.Weapon;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

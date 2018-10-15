@@ -1,3 +1,5 @@
+package ELO;
+
 /**
  * @author S.A. Tanja
  * Switches the MMR of the loser and the winner if the loser was the lower ranked fencer.

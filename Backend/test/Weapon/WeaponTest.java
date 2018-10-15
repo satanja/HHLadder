@@ -1,3 +1,9 @@
+package Weapon;
+
+import Weapon.Epee;
+import Weapon.Foil;
+import Weapon.Sabre;
+import Weapon.Weapon;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

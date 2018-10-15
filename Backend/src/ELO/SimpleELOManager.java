@@ -1,3 +1,5 @@
+package ELO;
+
 public class SimpleELOManager extends ELOManager {
 
     @Override
