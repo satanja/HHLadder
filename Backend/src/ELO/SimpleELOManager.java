@@ -1,12 +1,6 @@
-public class SimpleELOManager extends ELOManager {
+package ELO;
 
-    @Override
-    public void updateMMR(Match match) {
-        ELOFencer winner = match.getWinner();
-        ELOFencer loser = match.getLoser();
-        winner.setMMR(calculateWinnerMMR(winner, loser));
-        loser.setMMR(calculateLoserMMR(winner, loser));
-    }
+public class SimpleELOManager extends ELOManager {
 
     @Override
     protected int calculateWinnerMMR(ELOFencer winner, ELOFencer loser) {
@@ -19,7 +13,7 @@ public class SimpleELOManager extends ELOManager {
     }
 
     @Override
-    public int getInitialMMR() {
+    public int getInitialMMR(int position) {
         return 1000;
     }
 }

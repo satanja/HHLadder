@@ -1,12 +1,16 @@
+package Records;
+
+import ELO.ELOFencer;
+
 public class Match {
 
-    private Fencer fencerA;
+    private ELOFencer fencerA;
     private int scoreA;
 
-    private Fencer fencerB;
+    private ELOFencer fencerB;
     private int scoreB;
 
-    public Match(Fencer fencerA, Fencer fencerB, int scoreA, int scoreB) {
+    public Match(ELOFencer fencerA, ELOFencer fencerB, int scoreA, int scoreB) {
         this.scoreA = scoreA;
         this.fencerA = fencerA;
 

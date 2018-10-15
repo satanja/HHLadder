@@ -1,9 +1,14 @@
+package Records;
+
+import ELO.ELOFencer;
+import Weapon.Weapon;
+
 /**
  * @author S.A. Tanja
  *
  *
  */
-public class Fencer implements ELOFencer {
+public class Fencer implements ELOFencer, Comparable<Fencer> {
 
     // The name of the fencer
     private String name;
@@ -17,10 +22,9 @@ public class Fencer implements ELOFencer {
     // The number of bouts the fencer fenced
     private int boutsFenced;
 
-    public Fencer(String name, Weapon weapon, MMRCreator mmrCreator) {
+    public Fencer(String name, Weapon weapon) {
         this.name = name;
         this.weapon = weapon;
-        mmr = mmrCreator.getInitialMMR();
         boutsFenced = 0;
     }
 
@@ -63,8 +67,9 @@ public class Fencer implements ELOFencer {
         this.mmr = newMMR;
     }
 
-    public static void main(String[] args) {
-
+    // To sort the ladder based on Fencer's MMR
+    @Override
+    public int compareTo(Fencer fencer) {
+        return this.mmr - fencer.mmr;
     }
-
 }

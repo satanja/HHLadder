@@ -1,3 +1,5 @@
+package Weapon;
+
 public abstract class Weapon {
 
     protected String weapon;

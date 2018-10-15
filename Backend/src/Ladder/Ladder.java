@@ -1,3 +1,9 @@
+package Ladder;
+
+import ELO.ELOManager;
+import Records.Fencer;
+import Weapon.Weapon;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +21,13 @@ public class Ladder {
     // The weapon of the ladder
     private Weapon weapon;
 
+    // The ELO system of this ladder
+    private ELOManager eloManager;
 
-    public Ladder(Weapon weapon) {
+    public Ladder(Weapon weapon, ELOManager eloManager) {
         this.weapon = weapon;
         fencers = new ArrayList<>();
+        this.eloManager = eloManager;
     }
 
     /**
@@ -27,11 +36,14 @@ public class Ladder {
      *     <li>The {@code Fencer} uses the same weapon as the {@code Ladder}</li>
      *     <li>There does not already exist a {@code Fencer} with the same name</li>
      * </ul>
+     * Also sets the initial MMR of the fencer
      * @return true when the {@code fencer} has the same weapon and a fencer with the same name does not exist.
      */
     public boolean addFencer(Fencer fencer) {
         if (fencerHasSameWeapon(fencer) && !containsFencer(fencer)) {
             fencers.add(fencer);
+            int initialMMR = eloManager.getInitialMMR(fencers.indexOf(fencer));
+            fencer.setMMR(initialMMR);
             return true;
         }
         return false;
