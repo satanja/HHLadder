@@ -71,7 +71,7 @@ public class Fencer implements ELOFencer, Comparable<Fencer> {
 
     }
 
-    // To sort the ladder based on Records.Fencer's MMR
+    // To sort the ladder based on Fencer's MMR
     @Override
     public int compareTo(Fencer fencer) {
         return this.mmr - fencer.mmr;

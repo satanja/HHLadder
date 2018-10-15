@@ -3,7 +3,7 @@ package ELO;
 /**
  * @author S.A. Tanja
  */
-public  interface ELOFencer {
+public interface ELOFencer {
 
     /**
      * Gets the number of bouts fenced
