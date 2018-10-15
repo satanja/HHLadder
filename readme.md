@@ -9,15 +9,18 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 Frontend:
-    * Not yet determined
+
+* Not yet determined
 
 Backend:
-    * Java 8 - download the JDK [here](https://www.oracle.com/technetwork/java/javase/downloads/index.html), if not done so already
-    * Your preferred IDE - for example, [intellij](https://www.jetbrains.com/idea/download/) (Windows, MacOS, Linux)
+
+* Java 8 - download the JDK [here](https://www.oracle.com/technetwork/java/javase/downloads/index.html), if not done so already
+* Your preferred IDE - for example, [intellij](https://www.jetbrains.com/idea/download/) (Windows, MacOS, Linux)
 
 Documentation:
-    * LaTeX installation - for example, [TeX live](https://www.tug.org/texlive/acquire-netinstall.html)
-    * LaTex editor - for example, [TEX Maker](http://www.xm1math.net/texmaker/) (Windows, MacOS, Linux)
+
+* LaTeX installation - for example, [TeX live](https://www.tug.org/texlive/acquire-netinstall.html)
+* LaTex editor - for example, [TEX Maker](http://www.xm1math.net/texmaker/) (Windows, MacOS, Linux)
 
 ## Contributing
 TODO.
