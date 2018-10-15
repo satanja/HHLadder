@@ -3,7 +3,7 @@
  *
  *
  */
-public class Fencer implements ELOFencer {
+public class Fencer implements ELOFencer, Comparable<Fencer> {
 
     // The name of the fencer
     private String name;
@@ -66,4 +66,9 @@ public class Fencer implements ELOFencer {
 
     }
 
+    // To sort the ladder based on Fencer's MMR
+    @Override
+    public int compareTo(Fencer fencer) {
+        return this.mmr - fencer.mmr;
+    }
 }
