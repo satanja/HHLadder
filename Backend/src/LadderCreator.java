@@ -3,10 +3,11 @@ public class LadderCreator {
     /**
      * Creates a Ladder for a specific weapon
      * @param weapon The weapon to create a ladder for
+     * @param eloManager The ELOManager of the ladder
      * @return A Ladder object with the right weapon.
      * @throws IllegalArgumentException if an invalid weapon type is entered
      */
-    public Ladder createLadder(String weapon) throws IllegalArgumentException {
+    public Ladder createLadder(String weapon, ELOManager eloManager) throws IllegalArgumentException {
         Weapon weaponObj;
         switch (weapon) {
             case "foil":
@@ -21,7 +22,7 @@ public class LadderCreator {
             default:
                 throw new IllegalArgumentException("Weapon " + weapon + " is not recognized");
         }
-        return new Ladder(weaponObj);
+        return new Ladder(weaponObj, eloManager);
 
     }
 
