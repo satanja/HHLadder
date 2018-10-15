@@ -34,8 +34,8 @@ The backend is divided into the following packages
 
 * ELO The package with all the code handling ELO functionality
 * Ladder The package with all the code relevant to handling the ladder (adding fencers, processing matches, etc.)
-* Records The package containing record data types, i.e. `Match`es and `Fencer`s.
-* Weapon The package containing classes for `Weapon`s, used for verification and creation of `Ladder`s per weapon.
+* Records The package containing record data types, i.e. `Match` and `Fencer`.
+* Weapon The package containing classes for `Weapon`, used for verification and creation of `Ladder`s per weapon.
 
 ### Documentation
 
@@ -49,4 +49,3 @@ The folder containing the documentation with the setup, rules, etc. of the ladde
 ## Acknowledgements
 * The board of Hoc Habet 2018-2019
 * Everyone else who gave input on deciding how to implement the ladder
-
