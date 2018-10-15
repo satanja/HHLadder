@@ -7,7 +7,12 @@ public abstract class ELOManager implements MMRCreator {
      * Updates the MMR of both fencers of the {@code match}
      * @param match
      */
-    public abstract void updateMMR(Match match);
+    public void updateMMR(Match match) {
+        ELOFencer winner = match.getWinner();
+        ELOFencer loser = match.getLoser();
+        winner.setMMR(calculateWinnerMMR(winner, loser));
+        loser.setMMR(calculateLoserMMR(winner, loser));
+    }
 
 
     /**
