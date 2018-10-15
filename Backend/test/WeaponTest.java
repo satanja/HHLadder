@@ -33,6 +33,7 @@ public class WeaponTest {
         checkIsEqual(foil, epee, false);
     }
 
+    // Test the transitive property
     @Test
     public void equalsTransitiveDifferentWeapon() {
         Weapon epee = new Epee();
