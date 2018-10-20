@@ -59,7 +59,7 @@ public class Fencer implements ELOFencer, Comparable<Fencer> {
 
     @Override
     public int getMMR() {
-        return 0;
+        return mmr;
     }
 
     @Override
