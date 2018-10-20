@@ -13,8 +13,15 @@ public abstract class ELOManager {
     public void updateMMR(Match match) {
         ELOFencer winner = match.getWinner();
         ELOFencer loser = match.getLoser();
-        winner.setMMR(calculateWinnerMMR(winner, loser));
-        loser.setMMR(calculateLoserMMR(winner, loser));
+
+        int winnerMMR = winner.getMMR();
+        int winnerBouts = winner.getBoutsFenced();
+
+        int loserMMR = loser.getMMR();
+        int loserBouts = loser.getBoutsFenced();
+
+        winner.setMMR(calculateWinnerMMR(winnerMMR, loserMMR, winnerBouts));
+        loser.setMMR(calculateLoserMMR(winnerMMR, loserMMR, loserBouts));
     }
 
     /**
@@ -27,17 +34,19 @@ public abstract class ELOManager {
 
     /**
      * Calculates the new MMR of the winning fencer
-     * @param winner The fencer who won the {@code match}
-     * @param loser The fencer who lost the {@code match}
+     * @param winnerMMR The MMR of the winner before the match
+     * @param loserMMR The MMR of the loser before the match
+     * @param winnerBouts The number of bouts the winner played
      * @return The new MMR of {@code winner}
      */
-    protected abstract int calculateWinnerMMR(ELOFencer winner, ELOFencer loser);
+    protected abstract int calculateWinnerMMR(int winnerMMR, int loserMMR, int winnerBouts);
 
     /**
      * Calculates the new MMR of the losing fencer
-     * @param winner The fencer who won the {@code match}
-     * @param loser The fencer who lost the {@code match}
+     * @param winnerMMR The MMR of the winner before the match
+     * @param loserMMR The MMR of the loser before the match
+     * @param loserBouts The number of bouts the loser played
      * @return The new MMR of {@code loser}
      */
-    protected abstract int calculateLoserMMR(ELOFencer winner, ELOFencer loser);
+    protected abstract int calculateLoserMMR(int winnerMMR, int loserMMR, int loserBouts);
 }

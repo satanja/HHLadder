@@ -7,13 +7,13 @@ package ELO;
 public class SuperSimpleELOManager extends ELOManager {
 
     @Override
-    protected int calculateWinnerMMR(ELOFencer winner, ELOFencer loser) {
-        return Math.max(winner.getMMR(), loser.getMMR());
+    protected int calculateWinnerMMR(int winnerMMR, int loserMMR, int winnerBouts) {
+        return Math.max(winnerMMR, loserMMR);
     }
 
     @Override
-    protected int calculateLoserMMR(ELOFencer winner, ELOFencer loser) {
-        return Math.min(winner.getMMR(), loser.getMMR());
+    protected int calculateLoserMMR(int winnerMMR, int loserMMR, int loserBouts) {
+        return Math.min(winnerMMR, loserMMR);
     }
 
     @Override
