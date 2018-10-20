@@ -79,4 +79,26 @@ public class MatchTest {
         checkExceptionWinner();
         checkExceptionLoser();
     }
+
+    // match needs to update the number of bouts of the fencers
+    @Test
+    public void getBoutsFencedNoMatches() {
+        Weapon epee = new Epee();
+        String name = "stefan";
+        Fencer stefan = new Fencer(name, epee);
+        assertEquals(0, stefan.getBoutsFenced());
+    }
+
+    @Test
+    public void getBoutsFencedMultipleMatches() {
+        Weapon epee = new Epee();
+        String name = "stefan";
+        Fencer stefan = new Fencer(name, epee);
+        Fencer bob = new Fencer(" bob", epee);
+        for (int i = 1; i <= 100; i++) {
+            new Match(stefan, bob, 1, 0);
+            assertEquals(i, stefan.getBoutsFenced());
+            assertEquals(i, bob.getBoutsFenced());
+        }
+    }
 }
