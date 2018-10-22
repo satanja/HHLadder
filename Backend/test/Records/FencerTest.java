@@ -75,7 +75,7 @@ public class FencerTest {
 
 
         // Sort it and verify its correctness
-        Collections.sort(ranking);
+        Collections.sort(ranking, Fencer.ELOComparator);
         int mmr = ranking.get(0).getMMR();
         for (Fencer fencer : ranking) {
             assertTrue(mmr <= fencer.getMMR());
