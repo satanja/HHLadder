@@ -3,12 +3,14 @@ package Records;
 import ELO.ELOFencer;
 import Weapon.Weapon;
 
+import java.util.Comparator;
+
 /**
  * @author S.A. Tanja
  *
  *
  */
-public class Fencer implements ELOFencer, Comparable<Fencer> {
+public class Fencer implements ELOFencer {
 
     // The name of the fencer
     private String name;
@@ -68,8 +70,10 @@ public class Fencer implements ELOFencer, Comparable<Fencer> {
     }
 
     // To sort the ladder based on Fencer's MMR
-    @Override
-    public int compareTo(Fencer fencer) {
-        return this.mmr - fencer.mmr;
-    }
+    public static Comparator<Fencer> ELOComparator = new Comparator<Fencer>() {
+        @Override
+        public int compare(Fencer a, Fencer b) {
+            return a.getMMR() - b.getMMR();
+        }
+    };
 }
