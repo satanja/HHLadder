@@ -50,4 +50,36 @@ public class FencerTest {
         assertEquals(mmr, fencer.getMMR());
     }
 
+
+    @Test
+    public void compareTo() {
+        Random randomPosition = new Random();
+        String name = "a";
+        Weapon foil = new Foil();
+
+        List<Integer> positions = new ArrayList<>();
+        int size = 100;
+        for (int i = 0; i < size; i++) {
+            positions.add(i);
+        }
+
+        // Create a randomly ordered ranking with distinct positions (0 to size -1)
+        List<Fencer> ranking = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            Fencer fencer = new Fencer(name, foil);
+            int index = randomPosition.nextInt(positions.size());
+            int position = positions.remove(index);
+            fencer.setMMR(position);
+            ranking.add(fencer);
+        }
+
+
+        // Sort it and verify its correctness
+        Collections.sort(ranking);
+        int mmr = ranking.get(0).getMMR();
+        for (Fencer fencer : ranking) {
+            assertTrue(mmr <= fencer.getMMR());
+            mmr = fencer.getMMR();
+        }
+    }
 }
