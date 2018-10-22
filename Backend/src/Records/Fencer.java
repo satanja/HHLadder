@@ -8,7 +8,7 @@ import Weapon.Weapon;
  *
  *
  */
-public class Fencer implements ELOFencer, Comparable<Fencer> {
+public class Fencer implements ELOFencer {
 
     // The name of the fencer
     private String name;
@@ -67,9 +67,4 @@ public class Fencer implements ELOFencer, Comparable<Fencer> {
         this.mmr = newMMR;
     }
 
-    // To sort the ladder based on Fencer's MMR
-    @Override
-    public int compareTo(Fencer fencer) {
-        return this.mmr - fencer.mmr;
-    }
 }
