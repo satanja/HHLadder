@@ -36,8 +36,8 @@ public abstract class ELOManagerTest {
         Weapon epee = new Epee();
         a = new Fencer("a", epee);
         b = new Fencer("b", epee);
-        intializeMMR(a);
-        intializeMMR(b);
+        initializeMMR(a);
+        initializeMMR(b);
     }
 
     /**
@@ -54,7 +54,7 @@ public abstract class ELOManagerTest {
      * Intialize the mmr of the fencers
      * @param fencer
      */
-    protected void intializeMMR(Fencer fencer) {
+    protected void initializeMMR(Fencer fencer) {
         int position = randomPosition.nextInt(100) + 1;
         fencer.setMMR(instance.getInitialMMR(position));
     }
