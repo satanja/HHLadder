@@ -14,8 +14,8 @@ public class SimpleELOManagerTest extends ELOManagerTest {
 
 
     @Override
-    public void setUpInstance() {
-        instance = new SimpleELOManager();
+    public ELOManager setUpInstance() {
+        return new SimpleELOManager();
     }
 
     @Test

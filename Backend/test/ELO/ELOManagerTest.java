@@ -11,7 +11,7 @@ import java.util.Random;
 public abstract class ELOManagerTest {
 
     // The ELOManager to test
-    protected ELOManager instance;
+    private ELOManager instance;
 
     // A test match to test with
     private Match testMatch;
@@ -24,8 +24,12 @@ public abstract class ELOManagerTest {
     private Random randomPosition = new Random();
 
     // Subclass is responsible for instance initialization
-    @Before
-    public abstract void setUpInstance();
+
+    public ELOManagerTest() {
+        instance = setUpInstance();
+    }
+
+    public abstract ELOManager setUpInstance();
 
     @Before
     public void setUpFencers() {
