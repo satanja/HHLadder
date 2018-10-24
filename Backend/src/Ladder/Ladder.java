@@ -63,7 +63,7 @@ public class Ladder {
 
     /**
      * Returns the victor of the ladder
-     * @return The fencer at the head of the ranking
+     * @return The fencer at the head of the ranking, or null if the ladder is empty
      */
     public Fencer getVictor() {
         // TODO implement
@@ -74,7 +74,7 @@ public class Ladder {
         return fencer.getWeapon().equals(weapon);
     }
 
-    private boolean containsFencer(Fencer fencer) {
+    private boolean containsFencer(String fencer) {
         // TODO implement
         return false;
     }
