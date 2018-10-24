@@ -12,7 +12,7 @@ public class Ladder {
     /*
      * Rep. inv.:
      * - All {@code Fencer}s in {@code fencers} use the weapon {@code weapon}
-     * - The index of the fencer in {@code fencers} is their position on the ladder.
+     * - {@code fencers} is sorted by MMR of the fencers
      */
 
     // All the fencers in the ladder
@@ -47,6 +47,27 @@ public class Ladder {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Creates a match of two fencers, updates their MMR, and finally resorts the ladder ranking.
+     * @param fencerA The first fencer
+     * @param fencerB The second fencer
+     * @param scoreA The number of touches fencerA made
+     * @param scoreB The number of touches fencerB made
+     * @throws IllegalArgumentException if (!fencers.contains(fencerA) || !fencers.contains(fencerB))
+     */
+    public void processMatch(String fencerA, String fencerB, int scoreA, int scoreB) throws IllegalArgumentException {
+        // TODO implement
+    }
+
+    /**
+     * Returns the victor of the ladder
+     * @return The fencer at the head of the ranking
+     */
+    public Fencer getVictor() {
+        // TODO implement
+        return null;
     }
 
     private boolean fencerHasSameWeapon(Fencer fencer) {
