@@ -8,12 +8,12 @@ public class SuperSimpleELOManager extends ELOManager {
 
     @Override
     protected int calculateWinnerMMR(int winnerMMR, int loserMMR, int winnerBouts) {
-        return Math.max(winnerMMR, loserMMR);
+        return Math.min(winnerMMR, loserMMR);
     }
 
     @Override
     protected int calculateLoserMMR(int winnerMMR, int loserMMR, int loserBouts) {
-        return Math.min(winnerMMR, loserMMR);
+        return Math.max(winnerMMR, loserMMR);
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.util.Random;
 public abstract class ELOManagerTest {
 
     // The ELOManager to test
-    private ELOManager instance;
+    protected ELOManager instance;
 
     // A test match to test with
     private Match testMatch;
