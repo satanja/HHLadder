@@ -132,7 +132,7 @@ public class Ladder {
         result.append("ranking:");
         result.append("\n");
         for (Fencer fencer : ranking) {
-            result.append(ranking.indexOf(fencer));
+            result.append(ranking.indexOf(fencer) + 1);
             result.append(". ");
             result.append(fencer.getName());
             result.append(" ");
