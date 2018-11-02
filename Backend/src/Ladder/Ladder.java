@@ -47,6 +47,7 @@ public class Ladder {
             ranking.add(fencer);
             int initialMMR = eloManager.getInitialMMR(ranking.indexOf(fencer));
             fencer.setMMR(initialMMR);
+            sort();
             return true;
         }
         return false;
@@ -76,7 +77,7 @@ public class Ladder {
         a.increaseBoutsFenced();
         b.increaseBoutsFenced();
         eloManager.updateMMR(bout);
-        Collections.sort(ranking, Fencer.ELOComparator);
+        sort();
     }
 
     /**
@@ -122,6 +123,10 @@ public class Ladder {
 
     private IllegalArgumentException fencerNotFound(String name) {
         return new IllegalArgumentException("Fencer with name " + name + " is not in this ladder");
+    }
+
+    private void sort() {
+        Collections.sort(ranking, Fencer.ELOComparator);
     }
 
     @Override
