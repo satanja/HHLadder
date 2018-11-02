@@ -128,7 +128,8 @@ public class Ladder {
     public String toString() {
         StringBuilder result = new StringBuilder();
         result.append(weapon.toString());
-        result.append("ranking :");
+        result.append(" ");
+        result.append("ranking:");
         result.append("\n");
         for (Fencer fencer : ranking) {
             result.append(ranking.indexOf(fencer));

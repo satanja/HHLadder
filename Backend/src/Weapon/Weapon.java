@@ -17,4 +17,9 @@ public abstract class Weapon {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return weapon;
+    }
+
 }
