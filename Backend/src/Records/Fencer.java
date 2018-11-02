@@ -69,6 +69,17 @@ public class Fencer implements ELOFencer {
         this.mmr = newMMR;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Fencer) {
+            Fencer fencer = (Fencer) obj;
+            boolean sameName = fencer.getName().equals(name);
+            boolean sameWeapon = fencer.getWeapon().equals(weapon);
+            return sameName && sameWeapon;
+        }
+        return false;
+    }
+
     // To sort the ladder based on Fencer's MMR
     public static Comparator<Fencer> ELOComparator = (a, b) -> a.getMMR() - b.getMMR();
 }
