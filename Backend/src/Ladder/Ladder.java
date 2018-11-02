@@ -32,6 +32,10 @@ public class Ladder {
         this.eloManager = eloManager;
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
     /**
      * Adds a {@code Fencer} to the ladder if the fencer is not already present in the ranking
      * Also sets the initial MMR of the fencer
