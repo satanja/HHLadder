@@ -119,4 +119,21 @@ public class Ladder {
     private IllegalArgumentException fencerNotFound(String name) {
         return new IllegalArgumentException("Fencer with name " + name + " is not in this ladder");
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append(weapon.toString());
+        result.append("ranking :");
+        result.append("\n");
+        for (Fencer fencer : ranking) {
+            result.append(ranking.indexOf(fencer));
+            result.append(". ");
+            result.append(fencer.getName());
+            result.append(" ");
+            result.append(fencer.getMMR());
+            result.append("\n");
+        }
+        return result.toString();
+    }
 }
