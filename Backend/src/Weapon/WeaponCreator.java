@@ -20,6 +20,19 @@ public class WeaponCreator implements Iterable<Weapon> {
         allWeapons.add(sabre);
     }
 
+    public Weapon createWeapon(String w) throws IllegalArgumentException {
+        switch (w) {
+            case "epee":
+                return new Epee();
+            case "foil":
+                return new Foil();
+            case "sabre":
+                return new Sabre();
+            default:
+                throw new IllegalArgumentException("Weapon " + w + " is not a valid weapon");
+        }
+    }
+
     @Override
     public Iterator<Weapon> iterator() {
         return allWeapons.iterator();

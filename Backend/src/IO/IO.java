@@ -36,18 +36,9 @@ public class IO {
     }
 
     private Weapon readWeapon() throws IllegalArgumentException {
-        String w = in.next();
-        switch (w) {
-            case "epee":
-                return new Epee();
-            case "foil":
-                return new Foil();
-            case "sabre":
-                return new Sabre();
-            default:
-                throw new IllegalArgumentException(w + " is not a valid weapon");
-        }
-        // TODO refactor this into a LadderCreator
+        String weapon = in.next();
+        WeaponCreator creator = new WeaponCreator();
+        return creator.createWeapon(weapon);
     }
 
     private void readAdd() {
