@@ -73,12 +73,10 @@ public class Main {
      * @param eloManager The ELOManager for the ladders
      */
     private void addAllLadders(ELOManager eloManager) {
-       Weapon epee = new Epee();
-       Weapon foil = new Foil();
-       Weapon sabre = new Sabre();
-       ladders.add(new Ladder(epee, eloManager));
-       ladders.add(new Ladder(foil, eloManager));
-       ladders.add(new Ladder(sabre, eloManager));
+       WeaponCreator creator = new WeaponCreator();
+       for (Weapon weapon : creator) {
+           ladders.add(new Ladder(weapon, eloManager));
+       }
     }
 
     public static void main(String[] args) {
