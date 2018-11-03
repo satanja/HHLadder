@@ -66,6 +66,7 @@ public class IO {
         Weapon weapon = readWeapon();
         String name = in.next();
         main.addFencer(weapon, name);
+        printLadder(weapon);
     }
 
     /**
@@ -78,6 +79,7 @@ public class IO {
         int scoreA = in.nextInt();
         int scoreB = in.nextInt();
         main.processMatch(weapon, nameA, nameB, scoreA, scoreB);
+        printLadder(weapon);
     }
 
     /**
