@@ -83,7 +83,21 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        ELOManager eloManager = new SimpleELOManager();
+        ELOManager eloManager;
+        if (args.length > 0) {
+            switch (args[0]) {
+                case "-Ss":
+                    // SuperSimpleELOManager
+                    eloManager = new SuperSimpleELOManager();
+                case "-S":
+                    // SimpleELOManager
+                    eloManager = new SimpleELOManager();
+                default:
+                    eloManager = new SimpleELOManager();
+            }
+        } else {
+            eloManager = new SimpleELOManager();
+        }
         new Main(eloManager);
     }
 }
