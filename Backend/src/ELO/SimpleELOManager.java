@@ -1,5 +1,8 @@
 package ELO;
 
+/**
+ * @author S.A. Tanja
+ */
 public class SimpleELOManager extends ELOManager {
 
     @Override

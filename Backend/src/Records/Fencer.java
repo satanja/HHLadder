@@ -7,8 +7,6 @@ import java.util.Comparator;
 
 /**
  * @author S.A. Tanja
- *
- *
  */
 public class Fencer implements ELOFencer {
 

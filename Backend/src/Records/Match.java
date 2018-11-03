@@ -2,6 +2,9 @@ package Records;
 
 import ELO.ELOFencer;
 
+/**
+ * @author S.A. Tanja
+ */
 public class Match {
 
     private ELOFencer fencerA;
@@ -18,6 +21,11 @@ public class Match {
         this.fencerB = fencerB;
     }
 
+    /**
+     * Gets the winner of the match
+     * @return The fencer with the largest number of touches
+     * @throws IllegalStateException If both fencers have the same number of touches
+     */
     public ELOFencer getWinner() throws IllegalStateException {
         if (scoreA > scoreB) {
             return fencerA;
@@ -27,6 +35,11 @@ public class Match {
         throw new IllegalStateException("Fencers have same number of touches: " + scoreA + ", " + scoreB);
     }
 
+    /**
+     * Gets the loser of the match
+     * @return The fencer with the least number of touches
+     * @throws IllegalStateException If both fencers have the same number of touches
+     */
     public ELOFencer getLoser() throws IllegalStateException {
         if (scoreA < scoreB) {
             return fencerA;

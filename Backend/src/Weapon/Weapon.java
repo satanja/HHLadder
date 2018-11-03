@@ -1,5 +1,8 @@
 package Weapon;
 
+/**
+ * @author S.A. Tanja
+ */
 public abstract class Weapon {
 
     protected String weapon;

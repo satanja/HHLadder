@@ -8,6 +8,9 @@ import Weapon.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author S.A. Tanja
+ */
 public class Main {
 
 
