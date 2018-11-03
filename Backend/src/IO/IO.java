@@ -6,6 +6,9 @@ import Weapon.*;
 import java.util.IllegalFormatException;
 import java.util.Scanner;
 
+/**
+ * @author S.A. Tanja
+ */
 public class IO {
 
     private Main main;
@@ -17,6 +20,15 @@ public class IO {
         in = new Scanner(System.in);
     }
 
+    /**
+     * Reads the next command. Supported commands:
+     * <ul>
+     *     <li><b>add</b> The command to add a fencer to a specific ladder</li>
+     *     <li><b>match</b> The command to process a bout between two fencers</li>
+     *     <li><b>print</b> The command to print a ladder</li>
+     *     <li><b>exit</b> To exit the application</li>
+     * </ul>
+     */
     public void read() {
         String command = in.next();
         switch (command) {
@@ -35,18 +47,29 @@ public class IO {
         read();
     }
 
+    /**
+     * Reads the console for the weapon
+     * @return The appropriate weapon object
+     * @throws IllegalArgumentException If the input string is not a recognized weapon
+     */
     private Weapon readWeapon() throws IllegalArgumentException {
         String weapon = in.next();
         WeaponCreator creator = new WeaponCreator();
         return creator.createWeapon(weapon);
     }
 
+    /**
+     * Auxiliary method for processing the read command
+     */
     private void readAdd() {
         Weapon weapon = readWeapon();
         String name = in.next();
         main.addFencer(weapon, name);
     }
 
+    /**
+     * Auxiliary method for processing the match command
+     */
     private void readMatch() {
         Weapon weapon = readWeapon();
         String nameA = in.next();
@@ -56,6 +79,9 @@ public class IO {
         main.processMatch(weapon, nameA, nameB, scoreA, scoreB);
     }
 
+    /**
+     * Auxiliary method for processing the print command
+     */
     private void readPrint() {
         String flag = in.next();
         switch (flag) {
