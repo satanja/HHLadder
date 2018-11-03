@@ -1,5 +1,6 @@
 package IO;
 
+import Ladder.LadderCreator;
 import Main.Main;
 import Weapon.*;
 
@@ -86,13 +87,20 @@ public class IO {
         String flag = in.next();
         switch (flag) {
             case "-a":
-                // TODO implement
+                WeaponCreator creator = new WeaponCreator();
+                for (Weapon weapon : creator) {
+                    printLadder(weapon);
+                }
                 break;
             case "-w":
                 Weapon weapon = readWeapon();
-                String ladderString = main.ladderToString(weapon);
-                System.out.println(ladderString);
+                printLadder(weapon);
                 break;
         }
+    }
+
+    private void printLadder(Weapon weapon) {
+        String ladderString = main.ladderToString(weapon);
+        System.out.println(ladderString);
     }
 }
