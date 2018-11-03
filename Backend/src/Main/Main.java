@@ -89,11 +89,14 @@ public class Main {
                 case "-Ss":
                     // SuperSimpleELOManager
                     eloManager = new SuperSimpleELOManager();
+                    break;
                 case "-S":
                     // SimpleELOManager
                     eloManager = new SimpleELOManager();
+                    break;
                 default:
                     eloManager = new SimpleELOManager();
+                    break;
             }
         } else {
             eloManager = new SimpleELOManager();
