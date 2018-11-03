@@ -43,7 +43,7 @@ public class Ladder {
      */
     public boolean addFencer(String name) {
         if (!containsFencer(name)) {
-            Fencer fencer = new Fencer(name, weapon);
+            Fencer fencer = new Fencer(name, weapon, eloManager.isHiddenMMR());
             ranking.add(fencer);
             int initialMMR = eloManager.getInitialMMR(ranking.indexOf(fencer));
             fencer.setMMR(initialMMR);
@@ -139,9 +139,7 @@ public class Ladder {
         for (Fencer fencer : ranking) {
             result.append(ranking.indexOf(fencer) + 1);
             result.append(". ");
-            result.append(fencer.getName());
-            result.append(" ");
-            result.append(fencer.getMMR());
+            result.append(fencer.toString());
             result.append("\n");
         }
         return result.toString();

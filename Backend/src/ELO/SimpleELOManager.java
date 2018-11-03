@@ -24,6 +24,11 @@ public class SimpleELOManager extends ELOManager {
 
     @Override
     public Comparator<ELOFencer> getComparator() {
-        return ELOManager.descendingMMR;
+        return descendingMMR;
+    }
+
+    @Override
+    public boolean isHiddenMMR() {
+        return false;
     }
 }

@@ -22,10 +22,29 @@ public class Fencer implements ELOFencer {
     // The number of bouts the fencer fenced
     private int boutsFenced;
 
+    // Whether to show the MMR in the printed ranking
+    private boolean isHiddenMMR;
+
+    /**
+     * Create a fencer with its MMR not hidden
+     * @param name The name of the fencer
+     * @param weapon The weapon of the fencer
+     */
     public Fencer(String name, Weapon weapon) {
+        this(name, weapon, false);
+    }
+
+    /**
+     * Create a fencer with its MMR hidden or not
+     * @param name The name of the fencer
+     * @param weapon The weapon of the fencer
+     * @param isHiddenMMR Whether to hide the MMR of the fencer
+     */
+    public Fencer(String name, Weapon weapon, boolean isHiddenMMR) {
         this.name = name;
         this.weapon = weapon;
         boutsFenced = 0;
+        this.isHiddenMMR = isHiddenMMR;
     }
 
     /**
@@ -76,5 +95,17 @@ public class Fencer implements ELOFencer {
             return sameName && sameWeapon;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append(name);
+        if (isHiddenMMR) {
+            return result.toString();
+        }
+        result.append(" ");
+        result.append(mmr);
+        return result.toString();
     }
 }

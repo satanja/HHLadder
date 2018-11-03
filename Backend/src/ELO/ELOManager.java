@@ -64,7 +64,13 @@ public abstract class ELOManager {
 
     /**
      * Gets the correct comparator of the ELOManager
-     * @return
+     * @return The comparator to sort the ranking in the ladder
      */
     public abstract Comparator<ELOFencer> getComparator();
+
+    /**
+     * Whether to display the MMR of the fencer in the ranking
+     * @return true if it must be hidden, false if not
+     */
+    public abstract boolean isHiddenMMR();
 }
