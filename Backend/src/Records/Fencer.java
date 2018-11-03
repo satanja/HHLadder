@@ -77,7 +77,4 @@ public class Fencer implements ELOFencer {
         }
         return false;
     }
-
-    // To sort the ladder based on Fencer's MMR
-    public static Comparator<Fencer> ELOComparator = (a, b) -> b.getMMR() - a.getMMR();
 }

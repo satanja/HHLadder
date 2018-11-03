@@ -126,7 +126,7 @@ public class Ladder {
     }
 
     private void sort() {
-        Collections.sort(ranking, Fencer.ELOComparator);
+        Collections.sort(ranking, eloManager.getComparator());
     }
 
     @Override

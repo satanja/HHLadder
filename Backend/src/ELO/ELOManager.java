@@ -1,6 +1,8 @@
 package ELO;
 import Records.Match;
 
+import java.util.Comparator;
+
 /**
  * @author S.A. Tanja
  */
@@ -49,4 +51,20 @@ public abstract class ELOManager {
      * @return The new MMR of {@code loser}
      */
     protected abstract int calculateLoserMMR(int winnerMMR, int loserMMR, int loserBouts);
+
+    /**
+     * Comparator to sort fencers in ascending order
+     */
+    protected static Comparator<ELOFencer> ascendingMMR = (a, b) -> a.getMMR() - b.getMMR();
+
+    /**
+     * Comparator to sort fencers in descending order
+     */
+    protected static Comparator<ELOFencer> descendingMMR = (a, b) -> b.getMMR() - a.getMMR();
+
+    /**
+     * Gets the correct comparator of the ELOManager
+     * @return
+     */
+    public abstract Comparator<ELOFencer> getComparator();
 }
