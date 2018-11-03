@@ -31,21 +31,22 @@ public class IO {
      * </ul>
      */
     public void read() {
-        String command = in.next();
-        switch (command) {
-            case "add":
-                readAdd();
-                break;
-            case "match":
-                readMatch();
-                break;
-            case "print":
-                readPrint();
-                break;
-            case "exit":
-                return;
+        while(true) {
+            String command = in.next();
+            switch (command) {
+                case "add":
+                    readAdd();
+                    break;
+                case "match":
+                    readMatch();
+                    break;
+                case "print":
+                    readPrint();
+                    break;
+                case "exit":
+                    return;
+            }
         }
-        read();
     }
 
     /**
