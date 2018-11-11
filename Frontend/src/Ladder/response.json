@@ -1,0 +1,15 @@
+{
+    "fencers": [
+        {
+            "id": 1,
+            "name": "Stefan",
+            "MMR": 1200
+        },
+        {
+            "id": 0,
+            "name": "Bob",
+            "MMR": 1000
+        }
+    ],
+    "isHiddenMMR": false
+}
