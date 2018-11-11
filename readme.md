@@ -28,19 +28,10 @@ TODO.
 ## Project structure
 
 ### Frontend
-
-Not yet determined.
+A frontend written in [React.js](https://reactjs.org/). Communicates through a WebSocket connection with the backend. The frontend is responsible for showing all the relevant information to the user, i.e. all the ladders for for all the weapons, and ways to interact with the ladder.
 
 ### Backend
-
-The backend is divided into the following packages
-
-* ELO The package with all the code handling ELO functionality
-* IO The package dealing with all the IO operations (later to a database)
-* Ladder The package with all the code relevant to handling the ladder (adding fencers, processing matches, etc.)
-* Main The starting point of the program
-* Records The package containing record data types, i.e. `Match` and `Fencer`.
-* Weapon The package containing classes for `Weapon`, used for verification and creation of `Ladder`s per weapon.
+The backend is a java server handling all the relevant work, e.g. accepting new connections from the frontend, processing requests, updating the database of the registered fencers, and updating the ladder representation inside memory.  
 
 ### Documentation
 
