@@ -19,9 +19,6 @@ public class Match {
 
         this.scoreB = scoreB;
         this.fencerB = fencerB;
-
-        fencerA.increaseBoutsFenced();
-        fencerB.increaseBoutsFenced();
     }
 
     /**
