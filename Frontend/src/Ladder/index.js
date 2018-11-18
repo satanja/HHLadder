@@ -17,15 +17,17 @@ const Ladder = props => {
         {isHiddenMMR ? null : <th>MMR</th>}
       </tr>
       {fencers.map((fencer, index) => {
+        const position = `${index + 1}.`;
+        const { name, MMR } = fencer;
         return(
           <tr>
-            <td>{index + 1}.</td>
-            <td>{fencer.name}</td>
-            {isHiddenMMR ? null : <td>{fencer.MMR}</td>}
+            <td>{position}</td>
+            <td>{name}</td>
+            {isHiddenMMR ? null : <td>{MMR}</td>}
           </tr>
         )
       })}
-    </table>
+      </table>
   )
 }
 
