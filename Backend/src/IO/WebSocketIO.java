@@ -42,7 +42,7 @@ public class WebSocketIO extends WebSocketServer {
     }
 
     public static void main(String[]    args) {
-        String host = "192.168.0.121";
+        String host = "localhost";
         int port = 4242;
         WebSocketServer server = new WebSocketIO(new InetSocketAddress(host, port));
         server.run();

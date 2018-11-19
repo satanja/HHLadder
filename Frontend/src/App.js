@@ -14,9 +14,8 @@ class App extends Component {
 
   connect() {
     const l = window.location;
-    console.log(l.host);    
     this.connection = new WebSocket(
-      `${l.protocol === "https:" ? "wss" : "ws"}://192.168.0.121:4242`
+      `${l.protocol === "https:" ? "wss" : "ws"}://${l.hostname}:4242`
     );
     this.connection.onclose = event => this.onConnectionClose(event);
     this.connection.onerror = event => this.onConnectionError(event);
