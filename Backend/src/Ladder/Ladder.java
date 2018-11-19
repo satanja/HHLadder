@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.json.*;
 public class Ladder {
 
     /*
@@ -131,6 +132,7 @@ public class Ladder {
 
     @Override
     public String toString() {
+        toJSON(); //TODO remove
         StringBuilder result = new StringBuilder();
         result.append(weapon.toString());
         result.append(" ");
@@ -143,5 +145,17 @@ public class Ladder {
             result.append("\n");
         }
         return result.toString();
+    }
+
+    public JSONObject toJSON() {
+        JSONObject json = new JSONObject();
+        ArrayList<JSONObject> jsonFencer = new ArrayList<>();
+        for (Fencer fencer : ranking) {
+            jsonFencer.add(fencer.toJSON());
+        }
+        json.put("fencers", jsonFencer);
+        json.put("isHiddenMMR", eloManager.isHiddenMMR());
+        System.out.println(json.toString());
+        return json;
     }
 }

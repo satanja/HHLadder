@@ -4,7 +4,9 @@ import ELO.*;
 import IO.*;
 import Ladder.*;
 import Weapon.*;
+import org.json.JSONObject;
 
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,15 @@ public class Main {
         ladders = new ArrayList<>();
         addAllLadders(eloManager);
         IO io = new IO(this);
-        io.read();
+        String host = "localhost";
+
+        int port = 4242;
+        WebSocketIO server = new WebSocketIO(this, new InetSocketAddress(host, port));
+
+        Thread IOThread = new Thread(io, "io");
+        IOThread.start();
+        Thread serverThread = new Thread(server, "server");
+        serverThread.start();
     }
 
     /**
@@ -57,6 +67,14 @@ public class Main {
         return getLadder(weapon).toString();
     }
 
+    /**
+     * Gets the JSON representation of the ladder with the right weapon
+     * @param weapon The weapon of the ladder
+     * @return The JSON representation of the ladder with the right weapon
+     */
+    public synchronized JSONObject ladderToJSON(Weapon weapon) {
+        return getLadder(weapon).toJSON();
+    }
     /**
      * Gets the ladder for the appropriate weapon
      * @param weapon The weapon of the ladder

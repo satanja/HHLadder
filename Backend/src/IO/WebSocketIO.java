@@ -6,18 +6,24 @@ import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 import java.net.InetSocketAddress;
 import org.json.*;
-
+import Weapon.*;
 
 public class WebSocketIO extends WebSocketServer {
 
-    public WebSocketIO(InetSocketAddress address) {
+    private Main main;
+
+    public WebSocketIO(Main main, InetSocketAddress address) {
         super(address);
+        this.main = main;
+    }
+
+    private JSONObject getJSONLadder(Weapon weapon) {
+        return main.ladderToJSON(weapon);
     }
 
     @Override
     public void onOpen(WebSocket webSocket, ClientHandshake clientHandshake) {
         System.out.println("Connected");
-        sendExampleJSON(webSocket);
     }
 
     @Override
@@ -28,6 +34,13 @@ public class WebSocketIO extends WebSocketServer {
     @Override
     public void onMessage(WebSocket webSocket, String s) {
         System.out.println("message received");
+        JSONObject json = new JSONObject(s);
+        switch (json.getString("command")) {
+            case "ladder":
+                Weapon epee = new Epee();
+                webSocket.send(getJSONLadder(epee).toString());
+                break;
+        }
         System.out.println(s);
     }
 
@@ -39,13 +52,6 @@ public class WebSocketIO extends WebSocketServer {
     @Override
     public void onStart() {
         System.out.println("server started successfully");
-    }
-
-    public static void main(String[]    args) {
-        String host = "localhost";
-        int port = 4242;
-        WebSocketServer server = new WebSocketIO(new InetSocketAddress(host, port));
-        server.run();
     }
 
     /**

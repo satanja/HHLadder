@@ -2,8 +2,7 @@ package Records;
 
 import ELO.ELOFencer;
 import Weapon.Weapon;
-
-import java.util.Comparator;
+import org.json.*;
 
 /**
  * @author S.A. Tanja
@@ -107,5 +106,13 @@ public class Fencer implements ELOFencer {
         result.append(" ");
         result.append(mmr);
         return result.toString();
+    }
+
+    public JSONObject toJSON() {
+        JSONObject json = new JSONObject();
+        json.put("id", 0); //TODO implement ids
+        json.put("name", name);
+        json.put("MMR", mmr);
+        return json;
     }
 }

@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
  * @author S.A. Tanja
  */
-public class IO {
+public class IO implements Runnable{
 
     private Main main;
 
@@ -105,5 +105,10 @@ public class IO {
     private void printLadder(Weapon weapon) {
         String ladderString = main.ladderToString(weapon);
         System.out.println(ladderString);
+    }
+
+    @Override
+    public void run() {
+        read();
     }
 }

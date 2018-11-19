@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 
 import Ladder from './Ladder/';
 
-const response = require('./Ladder/response.json');
-
 class App extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      "ladder": null
+    };
     this.connection = null;
     this.connect();
   }
@@ -34,17 +35,29 @@ class App extends Component {
   onConnectionMessage(event) {
     console.log("message received");
     const json = JSON.parse(event.data);
-    console.log(json);
+    if (json.fencers !== undefined) {
+      this.setState({ladder: json})
+    }
   }
 
   onConnectionOpen(event) {
     console.log("Connected");
   }
 
+  getLadder(ladder) {
+    const message = {
+      "command": "ladder",
+      "ladder": "epee"
+    };
+    this.connection.send(JSON.stringify(message));
+  }
+
   render() {
+    const ladder = this.state.ladder;
     return (
       <div>
-        <Ladder response={response}/>
+        <button onClick={event => this.getLadder("epee")}>refresh</button>
+        {ladder === null ? null : <Ladder response={ladder}/>}
       </div>
     );
   }
