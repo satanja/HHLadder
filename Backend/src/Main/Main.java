@@ -23,7 +23,7 @@ public class Main {
         ladders = new ArrayList<>();
         addAllLadders(eloManager);
         IO io = new IO(this);
-        String host = "localhost";
+        String host = "0.0.0.0";
 
         int port = 4242;
         WebSocketIO server = new WebSocketIO(this, new InetSocketAddress(host, port));
@@ -117,7 +117,7 @@ public class Main {
                     break;
             }
         } else {
-            eloManager = new SimpleELOManager();
+            eloManager = new SuperSimpleELOManager();
         }
         new Main(eloManager);
     }
