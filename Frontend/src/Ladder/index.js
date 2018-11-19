@@ -11,22 +11,26 @@ const Ladder = props => {
   const { fencers, isHiddenMMR } = props.response;
   return (
     <table>
-      <tr>
-        <th>Position</th>
-        <th>Name</th>
-        {isHiddenMMR ? null : <th>MMR</th>}
-      </tr>
-      {fencers.map((fencer, index) => {
-        const position = `${index + 1}.`;
-        const { name, MMR } = fencer;
-        return(
-          <tr>
-            <td>{position}</td>
-            <td>{name}</td>
-            {isHiddenMMR ? null : <td>{MMR}</td>}
-          </tr>
-        )
-      })}
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Name</th>
+          {isHiddenMMR ? null : <th>MMR</th>}
+        </tr>
+      </thead>
+      <tbody>
+        {fencers.map((fencer, index) => {
+          const position = `${index + 1}.`;
+          const { name, MMR } = fencer;
+          return(
+            <tr key={position}>
+              <td>{position}</td>
+              <td>{name}</td>
+              {isHiddenMMR ? null : <td>{MMR}</td>}
+            </tr>
+          )
+        })}
+      </tbody>
       </table>
   )
 }
