@@ -76,9 +76,7 @@ The backend is connected with the frontend through a WebSocket connection. The f
                     "id": 2,
                     "name": "Robin"
                 },
-
                 "newRank": 2,
-                
             }
         ]
     }
