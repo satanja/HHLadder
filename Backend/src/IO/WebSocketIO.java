@@ -4,8 +4,8 @@ import Main.Main;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
-
 import java.net.InetSocketAddress;
+import org.json.*;
 
 
 public class WebSocketIO extends WebSocketServer {
@@ -16,8 +16,8 @@ public class WebSocketIO extends WebSocketServer {
 
     @Override
     public void onOpen(WebSocket webSocket, ClientHandshake clientHandshake) {
-        webSocket.send("hey");
-        System.out.println("Opened");
+        System.out.println("Connected");
+        sendExampleJSON(webSocket);
     }
 
     @Override
@@ -46,5 +46,16 @@ public class WebSocketIO extends WebSocketServer {
         int port = 4242;
         WebSocketServer server = new WebSocketIO(new InetSocketAddress(host, port));
         server.run();
+    }
+
+    /**
+     * Example method for sending JSON messages to the frontend
+     * @param webSocket The WebSocket connection
+     */
+    public void sendExampleJSON(WebSocket webSocket) {
+        JSONObject json = new JSONObject();
+        json.put("success", true);
+        String jsonMessage = json.toString();
+        webSocket.send(jsonMessage);
     }
 }

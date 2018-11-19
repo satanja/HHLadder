@@ -32,7 +32,9 @@ class App extends Component {
   }
 
   onConnectionMessage(event) {
-    console.log(event.data);
+    console.log("message received");
+    const json = JSON.parse(event.data);
+    console.log(json);
   }
 
   onConnectionOpen(event) {
