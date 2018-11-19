@@ -42,6 +42,7 @@ class App extends Component {
 
   onConnectionOpen(event) {
     console.log("Connected");
+    this.getLadder();
   }
 
   getLadder(ladder) {
@@ -56,8 +57,7 @@ class App extends Component {
     const ladder = this.state.ladder;
     return (
       <div>
-        <button onClick={event => this.getLadder("epee")}>refresh</button>
-        {ladder === null ? null : <Ladder response={ladder}/>}
+        {ladder === null ? null : <Ladder response={ladder} name={"epee"}/>}
       </div>
     );
   }
