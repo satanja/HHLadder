@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Ladder from './Ladder/';
+import Ladder from "./Ladder/";
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      "ladder": null
+      ladder: null
     };
     this.connection = null;
     this.connect();
@@ -36,7 +35,7 @@ class App extends Component {
     console.log("message received");
     const json = JSON.parse(event.data);
     if (json.fencers !== undefined) {
-      this.setState({ladder: json})
+      this.setState({ ladder: json });
     }
   }
 
@@ -47,8 +46,8 @@ class App extends Component {
 
   getLadder(ladder) {
     const message = {
-      "command": "ladder",
-      "ladder": "epee"
+      command: "ladder",
+      ladder: "epee"
     };
     this.connection.send(JSON.stringify(message));
   }
@@ -57,7 +56,7 @@ class App extends Component {
     const ladder = this.state.ladder;
     return (
       <div>
-        {ladder === null ? null : <Ladder response={ladder} name={"epee"}/>}
+        {ladder === null ? null : <Ladder response={ladder} name={"epee"} />}
       </div>
     );
   }

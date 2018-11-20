@@ -1,15 +1,15 @@
-import React from 'react';
-import { Table } from 'react-bootstrap';
-import styled from  'styled-components';
+import React from "react";
+import { Table } from "react-bootstrap";
+import styled from "styled-components";
 
 /**
  * Simple table with all the fencers of a specific ladder
  * Author: S.A. Tanja
  * Props:
  *  - Response JSON message from the backend
- *    - fencers: array of fencer objects 
+ *    - fencers: array of fencer objects
  *    - isHiddenMMR: whether to draw the MMR in the table
- *  - name The name of the ladder   
+ *  - name The name of the ladder
  */
 const Ladder = props => {
   const { fencers, isHiddenMMR } = props.response;
@@ -28,19 +28,19 @@ const Ladder = props => {
           {fencers.map((fencer, index) => {
             const position = `${index + 1}.`;
             const { name, MMR } = fencer;
-            return(
+            return (
               <tr key={position}>
                 <td>{position}</td>
                 <td>{name}</td>
                 {isHiddenMMR ? null : <td>{MMR}</td>}
               </tr>
-            )
+            );
           })}
         </tbody>
-        </Table>
-      </TableWindow>
-  )
-}
+      </Table>
+    </TableWindow>
+  );
+};
 
 const TableWindow = styled.div`
   width: 90%;
@@ -52,4 +52,5 @@ const Caption = styled.caption`
   font-weight: bold;
   color: #000000;
 `;
+
 export default Ladder;

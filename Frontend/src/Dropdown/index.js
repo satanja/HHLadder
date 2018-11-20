@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Simple dropdown template
@@ -10,18 +10,22 @@ import React from 'react';
  */
 const Dropdown = props => {
   const { values, className, required, requiredText } = props;
-  return(
+  return (
     <select
       className={className}
       onChange={event => props.onChange(event)}
       required={required}
     >
-      {required? null: <option disabled selected value>{requiredText}</option>}
+      {required ? null : (
+        <option disabled selected value>
+          {requiredText}
+        </option>
+      )}
       {values.map(value => {
-        return <option key={value}>{value}</option>
-      })}  
+        return <option key={value}>{value}</option>;
+      })}
     </select>
-  );  
-}
+  );
+};
 
-export default Dropdown;  
+export default Dropdown;
