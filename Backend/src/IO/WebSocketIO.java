@@ -5,6 +5,10 @@ import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+
 import org.json.*;
 import Weapon.*;
 
@@ -38,7 +42,11 @@ public class WebSocketIO extends WebSocketServer {
             case "ladders":
                 webSocket.send(main.laddersToJSON().toString());
                 break;
+            case "add":
+                add(json);
+                break;
             case "ladder":
+                //TODO implement properly
                 Weapon epee = new Epee();
                 webSocket.send(getJSONLadder(epee).toString());
                 break;
@@ -53,6 +61,37 @@ public class WebSocketIO extends WebSocketServer {
     @Override
     public void onStart() {
         System.out.println("server started successfully");
+    }
+
+
+    /**
+     * Parses the JSON message for the add command
+     * @param addMessage The JSON message of the add command
+     */
+    private void add(JSONObject addMessage) {
+        String name = addMessage.getString("name");
+        JSONArray weapons = addMessage.getJSONArray("ladders");
+        for (Weapon weapon : getWeapons(weapons)) {
+            main.addFencer(weapon, name);
+        }
+    }
+
+    /**
+     * Converts all the weapon strings in a JSON array to Weapons
+     * @param weaponsJson The JSON array of weapon strings
+     * @return A collection of all the weapons present
+     */
+    private Collection<Weapon> getWeapons(JSONArray weaponsJson) {
+        ArrayList<Weapon> weapons = new ArrayList<Weapon>();
+
+        WeaponCreator creator = new WeaponCreator();
+        for (Object weaponObj : weaponsJson.toList()) {
+            HashMap<String, String> map = (HashMap<String, String>) weaponObj;
+            String weapon = map.get("name");
+            weapons.add(creator.createWeapon(weapon));
+        }
+
+        return weapons;
     }
 
     /**

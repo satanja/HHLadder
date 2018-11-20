@@ -14,20 +14,13 @@ class RegisterForm extends Component {
     this.state = {
       name: "",
       id: "",
-      ladders: [
-        {
-          name: "epee",
-          selected: false
-        },
-        {
-          name: "foil",
-          selected: false
-        },
-        {
-          name: "sabre",
-          selected: false
-        }
-      ]
+      ladders: props.ladders.map(ladder => {
+        const obj = {
+          name: ladder.name,
+          isSelected: false
+        };
+        return obj;
+      })
     };
   }
 
@@ -41,17 +34,47 @@ class RegisterForm extends Component {
     this.setState({ id: newId });
   }
 
-  updateCheckbox(event) {}
+  updateCheckbox(event) {
+    const { checked, name } = event.target;
+    const ladders = this.state.ladders;
+    const index = ladders.findIndex(ladder => {
+      return ladder.name === name;
+    });
+    this.setState(prevState => ({
+      ...prevState,
+      ladders: prevState.ladders.map((ladder, i) => {
+        if (i === index) {
+          return Object.assign(ladder, { isSelected: checked });
+        } else {
+          return ladder;
+        }
+      })
+    }));
+  }
+
+  onSubmit(event) {
+    const ladders = this.state.ladders;
+    const selectedLadders = ladders.filter(ladder => {
+      return ladder.isSelected;
+    });
+    const message = {
+      command: "add",
+      name: this.state.name,
+      ladders: selectedLadders
+    };
+    this.props.onSubmit(message);
+  }
 
   render() {
     return (
       <RegisterWindow>
-        <Caption>Register Form</Caption>
+        <Caption>Register</Caption>
         <form>
           <FormGroup controlId="formBasicText">
             <ControlLabel>Name</ControlLabel>
             <FormControl
               type="text"
+              autocomplete="off"
               value={this.state.name}
               placeholder="Enter your name"
               onChange={event => this.updateName(event)}
@@ -61,6 +84,7 @@ class RegisterForm extends Component {
             <ControlLabel>Membership ID</ControlLabel>
             <FormControl
               type="number"
+              autocomplete="off"
               value={this.state.id}
               placeholder="Enter your membership ID"
               onChange={event => this.updateId(event)}
@@ -73,13 +97,16 @@ class RegisterForm extends Component {
                 <Checkbox
                   onChange={event => this.updateCheckbox(event)}
                   name={ladder.name}
+                  key={index}
                 >
                   {ladder.name}
                 </Checkbox>
               );
             })}
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" onClick={event => this.onSubmit(event)}>
+            Submit
+          </Button>
         </form>
       </RegisterWindow>
     );

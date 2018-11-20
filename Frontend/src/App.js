@@ -49,6 +49,10 @@ class App extends Component {
     const message = {
       command: "ladders"
     };
+    this.submit(message);
+  }
+
+  submit(message) {
     this.connection.send(JSON.stringify(message));
   }
 
@@ -56,10 +60,15 @@ class App extends Component {
     const ladders = this.state.ladders;
     return (
       <div>
-        <RegisterForm />
-        {ladders.map(ladder => {
-          return <Ladder data={ladder} />;
-        })}
+        {ladders.length === 0 ? null : (
+          <RegisterForm
+            onSubmit={message => this.submit(message)}
+            ladders={ladders}
+          />
+        )}
+        {ladders.map((ladder, index) => (
+          <Ladder data={ladder} key={index} />
+        ))}
       </div>
     );
   }

@@ -40,7 +40,7 @@ public class Main {
      * @param name The name of the fencer
      * @return true if the fancer has been added, false if not
      */
-    public boolean addFencer(Weapon weapon, String name) {
+    public synchronized boolean addFencer(Weapon weapon, String name) {
         Ladder ladder = getLadder(weapon);
         return ladder.addFencer(name);
     }
