@@ -75,6 +75,25 @@ public class Main {
     public synchronized JSONObject ladderToJSON(Weapon weapon) {
         return getLadder(weapon).toJSON();
     }
+
+    /**
+     * Gets a JSON representation of all the ladders
+     * @return The JSON representation of all the ladders
+     */
+    public synchronized JSONObject laddersToJSON() {
+        JSONObject json = new JSONObject();
+        ArrayList<JSONObject> ladderJSONs = new ArrayList<>();
+
+        WeaponCreator creator = new WeaponCreator();
+        for (Weapon weapon : creator) {
+            JSONObject ladderJSON = getLadder(weapon).toJSON();
+            ladderJSONs.add(ladderJSON);
+        }
+        json.put("ladders", ladderJSONs);
+
+        return json;
+    }
+
     /**
      * Gets the ladder for the appropriate weapon
      * @param weapon The weapon of the ladder
@@ -117,7 +136,7 @@ public class Main {
                     break;
             }
         } else {
-            eloManager = new SuperSimpleELOManager();
+            eloManager = new SimpleELOManager();
         }
         new Main(eloManager);
     }

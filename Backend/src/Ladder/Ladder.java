@@ -153,9 +153,9 @@ public class Ladder {
         for (Fencer fencer : ranking) {
             jsonFencer.add(fencer.toJSON());
         }
+        json.put("name", weapon.toString());
         json.put("fencers", jsonFencer);
         json.put("isHiddenMMR", eloManager.isHiddenMMR());
-        System.out.println(json.toString());
         return json;
     }
 }

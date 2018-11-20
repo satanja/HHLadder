@@ -33,15 +33,16 @@ public class WebSocketIO extends WebSocketServer {
 
     @Override
     public void onMessage(WebSocket webSocket, String s) {
-        System.out.println("message received");
         JSONObject json = new JSONObject(s);
         switch (json.getString("command")) {
+            case "ladders":
+                webSocket.send(main.laddersToJSON().toString());
+                break;
             case "ladder":
                 Weapon epee = new Epee();
                 webSocket.send(getJSONLadder(epee).toString());
                 break;
         }
-        System.out.println(s);
     }
 
     @Override
