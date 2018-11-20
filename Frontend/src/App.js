@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ladder: null
+      ladders: []
     };
     this.connection = null;
     this.connect();
@@ -35,30 +35,31 @@ class App extends Component {
   onConnectionMessage(event) {
     console.log("message received");
     const json = JSON.parse(event.data);
-    if (json.fencers !== undefined) {
-      this.setState({ ladder: json });
+    if (json.ladders !== undefined) {
+      this.setState({ ladders: json.ladders });
     }
   }
 
   onConnectionOpen(event) {
     console.log("Connected");
-    this.getLadder();
+    this.getLadders();
   }
 
-  getLadder(ladder) {
+  getLadders() {
     const message = {
-      command: "ladder",
-      ladder: "epee"
+      command: "ladders"
     };
     this.connection.send(JSON.stringify(message));
   }
 
   render() {
-    const ladder = this.state.ladder;
+    const ladders = this.state.ladders;
     return (
       <div>
         <RegisterForm />
-        {ladder === null ? null : <Ladder response={ladder} name={"epee"} />}
+        {ladders.map(ladder => {
+          return <Ladder data={ladder} />;
+        })}
       </div>
     );
   }

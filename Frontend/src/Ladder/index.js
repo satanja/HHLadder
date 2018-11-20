@@ -6,17 +6,17 @@ import styled from "styled-components";
  * Simple table with all the fencers of a specific ladder
  * Author: S.A. Tanja
  * Props:
- *  - Response JSON message from the backend
+ *  - data All the data of the ladder
  *    - fencers: array of fencer objects
  *    - isHiddenMMR: whether to draw the MMR in the table
  *  - name The name of the ladder
  */
 const Ladder = props => {
-  const { fencers, isHiddenMMR } = props.response;
+  const { name, fencers, isHiddenMMR } = props.data;
   return (
     <TableWindow>
       <Table striped bordered condensed hover>
-        <Caption>{props.name}</Caption>
+        <Caption>{name}</Caption>
         <thead>
           <tr>
             <th>Position</th>
