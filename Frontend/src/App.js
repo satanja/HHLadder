@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Ladder from "./Ladder/";
+import RegisterForm from "./RegisterForm";
 
 class App extends Component {
   constructor(props) {
@@ -56,6 +57,7 @@ class App extends Component {
     const ladder = this.state.ladder;
     return (
       <div>
+        <RegisterForm />
         {ladder === null ? null : <Ladder response={ladder} name={"epee"} />}
       </div>
     );
