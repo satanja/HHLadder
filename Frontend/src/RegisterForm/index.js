@@ -46,6 +46,7 @@ class RegisterForm extends Component {
   render() {
     return (
       <RegisterWindow>
+        <Caption>Register Form</Caption>
         <form>
           <FormGroup controlId="formBasicText">
             <ControlLabel>Name</ControlLabel>
@@ -59,7 +60,7 @@ class RegisterForm extends Component {
           <FormGroup controlId="formBasicText">
             <ControlLabel>Membership ID</ControlLabel>
             <FormControl
-              type="text"
+              type="number"
               value={this.state.id}
               placeholder="Enter your membership ID"
               onChange={event => this.updateId(event)}
@@ -84,11 +85,15 @@ class RegisterForm extends Component {
     );
   }
 }
+const Caption = styled.p`
+  text-align: center;
+`;
 
 const RegisterWindow = styled.div`
   width: 90%;
   margin: 0 auto;
-  background-color: #ededed;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
   padding: 2rem;
   margin-top: 2rem;
 `;
