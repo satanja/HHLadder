@@ -7,6 +7,7 @@ import {
   Button
 } from "react-bootstrap";
 import styled from "styled-components";
+import Window from "../Window";
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -65,30 +66,30 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <RegisterWindow>
+      <Window>
         <Caption>Register</Caption>
         <form>
-          <FormGroup controlId="formBasicText">
+          <FormGroup controlId="formName">
             <ControlLabel>Name</ControlLabel>
             <FormControl
               type="text"
-              autocomplete="off"
+              autoComplete="off"
               value={this.state.name}
               placeholder="Enter your name"
               onChange={event => this.updateName(event)}
             />
           </FormGroup>
-          <FormGroup controlId="formBasicText">
+          <FormGroup controlId="formId">
             <ControlLabel>Membership ID</ControlLabel>
             <FormControl
               type="number"
-              autocomplete="off"
+              autoComplete="off"
               value={this.state.id}
               placeholder="Enter your membership ID"
               onChange={event => this.updateId(event)}
             />
           </FormGroup>
-          <FormGroup>
+          <FormGroup controlId="formLadder">
             <ControlLabel>Select the ladders you want to join</ControlLabel>
             {this.state.ladders.map((ladder, index) => {
               return (
@@ -106,21 +107,12 @@ class RegisterForm extends Component {
             Submit
           </Button>
         </form>
-      </RegisterWindow>
+      </Window>
     );
   }
 }
 const Caption = styled.p`
   text-align: center;
-`;
-
-const RegisterWindow = styled.div`
-  width: 90%;
-  margin: 0 auto;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 2rem;
-  margin-top: 2rem;
 `;
 
 export default RegisterForm;
