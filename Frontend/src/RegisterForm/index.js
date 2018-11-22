@@ -103,7 +103,7 @@ class RegisterForm extends Component {
               );
             })}
           </FormGroup>
-          <Button type="submit" onClick={event => this.onSubmit(event)}>
+          <Button type="submit" onClick={() => this.onSubmit()}>
             Submit
           </Button>
         </form>
