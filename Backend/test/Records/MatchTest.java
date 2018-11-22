@@ -68,18 +68,6 @@ public class MatchTest {
         }
     }
 
-    @Test
-    public void invalidMatch() {
-        Weapon foil = new Foil();
-        Fencer lars = new Fencer("lars", foil);
-        Fencer hidde = new Fencer("hidde", foil);
-        int scoreLars = 5;
-        int scoreHidde = 5;
-        setUp(lars, hidde, scoreHidde, scoreLars);
-        checkExceptionWinner();
-        checkExceptionLoser();
-    }
-
     // match needs to update the number of bouts of the fencers
     @Test
     public void getBoutsFencedNoMatches() {
@@ -89,16 +77,4 @@ public class MatchTest {
         assertEquals(0, stefan.getBoutsFenced());
     }
 
-    @Test
-    public void getBoutsFencedMultipleMatches() {
-        Weapon epee = new Epee();
-        String name = "stefan";
-        Fencer stefan = new Fencer(name, epee);
-        Fencer bob = new Fencer(" bob", epee);
-        for (int i = 1; i <= 100; i++) {
-            new Match(stefan, bob, 1, 0);
-            assertEquals(i, stefan.getBoutsFenced());
-            assertEquals(i, bob.getBoutsFenced());
-        }
-    }
 }

@@ -46,6 +46,8 @@ public abstract class ELOManagerTest {
      * @param scoreB The number of touches of fencer b
      */
     protected void setUpMatch(int scoreA, int scoreB) {
+        a.increaseBoutsFenced();
+        b.increaseBoutsFenced();
         testMatch = new Match(a, b, scoreA, scoreB);
         instance.updateMMR(testMatch);
     }
