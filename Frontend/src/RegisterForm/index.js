@@ -36,14 +36,10 @@ class RegisterForm extends Component {
 
   updateCheckbox(event) {
     const { checked, name } = event.target;
-    const ladders = this.state.ladders;
-    const index = ladders.findIndex(ladder => {
-      return ladder.name === name;
-    });
     this.setState(prevState => ({
       ...prevState,
-      ladders: prevState.ladders.map((ladder, i) => {
-        if (i === index) {
+      ladders: prevState.ladders.map(ladder => {
+        if (ladder.name === name) {
           return Object.assign(ladder, { isSelected: checked });
         } else {
           return ladder;
@@ -60,7 +56,9 @@ class RegisterForm extends Component {
     const message = {
       command: "add",
       name: this.state.name,
-      ladders: selectedLadders
+      ladders: selectedLadders.map(ladder => {
+        return { name: ladder.name };
+      })
     };
     this.props.onSubmit(message);
   }
