@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
-import Ladder from "./Ladder/";
+import Ladder from "./Ladder";
 import RegisterForm from "./RegisterForm";
+import MatchForm from "./MatchForm";
 
 class App extends Component {
   constructor(props) {
@@ -61,10 +62,16 @@ class App extends Component {
     return (
       <div>
         {ladders.length === 0 ? null : (
-          <RegisterForm
-            onSubmit={message => this.submit(message)}
-            ladders={ladders}
-          />
+          <div>
+            <RegisterForm
+              onSubmit={message => this.submit(message)}
+              ladders={ladders}
+            />
+            <MatchForm
+              ladders={ladders}
+              onSubmit={message => this.submit(message)}
+            />
+          </div>
         )}
         {ladders.map((ladder, index) => (
           <Ladder data={ladder} key={index} />
