@@ -136,7 +136,7 @@ public class Main {
                     break;
             }
         } else {
-            eloManager = new SimpleELOManager();
+            eloManager = new SuperSimpleELOManager();
         }
         new Main(eloManager);
     }
