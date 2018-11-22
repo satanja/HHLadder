@@ -64,7 +64,7 @@ public class Main {
      * @param winner The winner of the bout
      * @param loser The loser of the bout
      */
-    public void processSimpleMatch(Weapon weapon, String winner, String loser) {
+    public synchronized void processSimpleMatch(Weapon weapon, String winner, String loser) {
         Ladder ladder = getLadder(weapon);
         ladder.processSimpleMatch(winner, loser);
     }

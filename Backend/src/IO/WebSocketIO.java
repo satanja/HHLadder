@@ -45,6 +45,9 @@ public class WebSocketIO extends WebSocketServer {
             case "add":
                 add(json);
                 break;
+            case "match":
+                match(json);
+                break;
             case "ladder":
                 //TODO implement properly
                 Weapon epee = new Epee();
@@ -74,6 +77,15 @@ public class WebSocketIO extends WebSocketServer {
         for (Weapon weapon : getWeapons(weapons)) {
             main.addFencer(weapon, name);
         }
+    }
+
+    private void match(JSONObject matchMessage) {
+        String w = matchMessage.getString("ladder");
+        Weapon weapon = new WeaponCreator().createWeapon(w);
+        JSONObject fencers = matchMessage.getJSONObject("fencers");
+        String winner = fencers.getString("winner");
+        String loser = fencers.getString("loser");
+        main.processSimpleMatch(weapon, winner, loser);
     }
 
     /**
