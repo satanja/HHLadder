@@ -59,6 +59,17 @@ public class Main {
     }
 
     /**
+     * Simple way to process a bout
+     * @param weapon The weapon the fencers fenced on
+     * @param winner The winner of the bout
+     * @param loser The loser of the bout
+     */
+    public void processSimpleMatch(Weapon weapon, String winner, String loser) {
+        Ladder ladder = getLadder(weapon);
+        ladder.processSimpleMatch(winner, loser);
+    }
+
+    /**
      * Gets the string representation of the ladder with the right weapon
      * @param weapon The weapon of the ladder
      * @return The string representation of the ladder with the right weapon

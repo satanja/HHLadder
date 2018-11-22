@@ -82,6 +82,30 @@ public class Ladder {
     }
 
     /**
+     * Uses the simple way to process a match
+     * @param winner The winner of the bout
+     * @param loser The loser of the bout
+     */
+    public void processSimpleMatch(String winner, String loser) {
+        if (!containsFencer(winner)) {
+            throw fencerNotFound(winner);
+        }
+        if (!containsFencer(loser)) {
+            throw fencerNotFound(loser);
+        }
+
+        Fencer a = getFencer(winner);
+        Fencer b = getFencer(loser);
+
+        Match bout = new Match(a, b);
+        a.increaseBoutsFenced();
+        b.increaseBoutsFenced();
+        eloManager.updateMMR(bout);
+        sort();
+
+    }
+
+    /**
      * Returns the victor of the ladder
      * @return The fencer at the head of the ranking, or null if the ladder is empty
      */
