@@ -7,28 +7,20 @@ import ELO.ELOFencer;
  */
 public class Match {
 
-    private ELOFencer fencerA;
-    private int scoreA;
+    private ELOFencer winner;
+    private ELOFencer loser;
 
-    private ELOFencer fencerB;
-    private int scoreB;
-
-    private boolean fencerADidWin;
+    private int winnerTouches;
+    private int loserTouches;
 
     public Match(ELOFencer fencerA, ELOFencer fencerB, int scoreA, int scoreB) {
-        this.scoreA = scoreA;
-        this.fencerA = fencerA;
-
-        this.scoreB = scoreB;
-        this.fencerB = fencerB;
-
-        fencerADidWin = getWinnerByScore() == fencerA;
+        setWinnerByScore(fencerA, fencerB, scoreA, scoreB);
+        setLoserByScore(fencerA, fencerB, scoreA, scoreB);
     }
 
-    public Match(ELOFencer fencerA, ELOFencer fencerB, boolean fencerADidWin) {
-        this.fencerA = fencerA;
-        this.fencerB = fencerB;
-        this.fencerADidWin = fencerADidWin;
+    public Match(ELOFencer winner, ELOFencer loser) {
+        this.winner = winner;
+        this.loser = loser;
     }
 
     /**
@@ -36,11 +28,15 @@ public class Match {
      * @return The fencer with the largest number of touches
      * @throws IllegalStateException If both fencers have the same number of touches
      */
-    private ELOFencer getWinnerByScore() throws IllegalStateException {
+    private void setWinnerByScore(ELOFencer fencerA, ELOFencer fencerB, int scoreA, int scoreB) throws IllegalStateException {
         if (scoreA > scoreB) {
-            return fencerA;
+            winner = fencerA;
+            winnerTouches = scoreA;
+            return;
         } else if (scoreB > scoreA) {
-            return  fencerB;
+            winner = fencerB;
+            winnerTouches = scoreB;
+            return;
         }
         throw new IllegalStateException("Fencers have same number of touches: " + scoreA + ", " + scoreB);
     }
@@ -50,27 +46,25 @@ public class Match {
      * @return The fencer with the least number of touches
      * @throws IllegalStateException If both fencers have the same number of touches
      */
-    private ELOFencer getLoserByScore() throws IllegalStateException {
+    private void setLoserByScore(ELOFencer fencerA, ELOFencer fencerB, int scoreA, int scoreB) throws IllegalStateException {
         if (scoreA < scoreB) {
-            return fencerA;
+            loser = fencerA;
+            loserTouches = scoreA;
+            return;
         } else if (scoreB < scoreA) {
-            return fencerB;
+            loser = fencerB;
+            loserTouches = scoreB;
+            return;
         }
         throw new IllegalStateException("Fencers have same number of touches: " + scoreA + ", " + scoreB);
     }
 
     public ELOFencer getWinner() {
-        if (fencerADidWin) {
-            return fencerA;
-        }
-        return fencerB;
+       return winner;
     }
 
     public ELOFencer getLoser() {
-        if (!fencerADidWin) {
-            return fencerA;
-        }
-        return fencerB;
+       return loser;
     }
 
 }
