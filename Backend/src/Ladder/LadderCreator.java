@@ -1,10 +1,7 @@
 package Ladder;
 
 import ELO.ELOManager;
-import Weapon.Epee;
-import Weapon.Foil;
-import Weapon.Sabre;
-import Weapon.Weapon;
+import Weapon.*;
 
 public class LadderCreator {
 
