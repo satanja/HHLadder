@@ -7,8 +7,7 @@ import {
   Button,
   HelpBlock
 } from "react-bootstrap";
-import styled from "styled-components";
-import Window from "../Window";
+import { Window, Caption } from "../Components";
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -170,8 +169,5 @@ class RegisterForm extends Component {
     );
   }
 }
-const Caption = styled.p`
-  text-align: center;
-`;
 
 export default RegisterForm;

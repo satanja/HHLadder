@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Window from "../Window";
 import {
   FormGroup,
   ControlLabel,
@@ -7,6 +6,7 @@ import {
   MenuItem,
   Button
 } from "react-bootstrap";
+import { Window, Caption } from "../Components";
 
 class MatchForm extends Component {
   constructor(props) {
@@ -19,7 +19,11 @@ class MatchForm extends Component {
   }
 
   setLadder(eventKey) {
-    this.setState({ selectedLadder: eventKey });
+    this.setState({
+      selectedLadder: eventKey,
+      winner: "Select the winner",
+      loser: "Select the loser"
+    });
   }
 
   setWinner(eventKey) {
@@ -30,16 +34,21 @@ class MatchForm extends Component {
     this.setState({ loser: eventKey });
   }
 
-  onSubmit() {
-    const message = {
-      command: "match",
-      ladder: this.state.selectedLadder,
-      fencers: {
-        winner: this.state.winner,
-        loser: this.state.loser
-      }
-    };
-    this.props.onSubmit(message);
+  onSubmit(event) {
+    if (
+      this.state.winner !== "Select the winner" &&
+      this.state.loser !== "Select the loser"
+    ) {
+      const message = {
+        command: "match",
+        ladder: this.state.selectedLadder,
+        fencers: {
+          winner: this.state.winner,
+          loser: this.state.loser
+        }
+      };
+      this.props.onSubmit(message);
+    }
   }
 
   render() {
@@ -47,6 +56,7 @@ class MatchForm extends Component {
     return (
       <Window>
         <form>
+          <Caption>Bout</Caption>
           <FormGroup controlId="formLadder">
             <ControlLabel>Ladder</ControlLabel>
             <br />

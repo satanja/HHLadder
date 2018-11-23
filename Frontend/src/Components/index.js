@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+const Caption = styled.p`
+  text-align: center;
+`;
+
 const Window = styled.div`
   width: 90%;
   margin: 0 auto;
@@ -9,4 +13,4 @@ const Window = styled.div`
   margin-top: 2rem;
 `;
 
-export default Window;
+export { Caption, Window };
