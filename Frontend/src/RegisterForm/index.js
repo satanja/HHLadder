@@ -4,7 +4,8 @@ import {
   ControlLabel,
   FormControl,
   Checkbox,
-  Button
+  Button,
+  HelpBlock
 } from "react-bootstrap";
 import styled from "styled-components";
 import Window from "../Window";
@@ -21,7 +22,10 @@ class RegisterForm extends Component {
           isSelected: false
         };
         return obj;
-      })
+      }),
+      nameValidation: null,
+      idValidation: null,
+      ladderValidation: null
     };
   }
 
@@ -49,19 +53,53 @@ class RegisterForm extends Component {
     }));
   }
 
+  canSubmit(event, selectedLadders) {
+    const nameLength = this.state.name.length;
+    const idLength = this.state.id.length;
+    if (nameLength > 0 && selectedLadders.length > 0 && idLength > 0) {
+      return true;
+    } else {
+      event.preventDefault();
+      this.validateNameLength();
+      this.validateId();
+      this.validateSelectedLadders(selectedLadders);
+      return false;
+    }
+  }
+
+  validateNameLength() {
+    const length = this.state.name.length;
+    this.setState({ nameValidation: length === 0 ? "error" : null });
+  }
+
+  validateId() {
+    const length = this.state.id.length;
+    this.setState({ idValidation: length === 0 ? "error" : null });
+  }
+
+  validateSelectedLadders(selectedLadders) {
+    const length = selectedLadders.length;
+    this.setState({ ladderValidation: length === 0 ? "error" : null });
+  }
+
   onSubmit(event) {
     const ladders = this.state.ladders;
-    const selectedLadders = ladders.filter(ladder => {
-      return ladder.isSelected;
-    });
+    const selectedLadders = ladders
+      .filter(ladder => {
+        return ladder.isSelected;
+      })
+      .map(ladder => {
+        return { name: ladder.name };
+      });
+
     const message = {
       command: "add",
       name: this.state.name,
-      ladders: selectedLadders.map(ladder => {
-        return { name: ladder.name };
-      })
+      ladders: selectedLadders
     };
-    this.props.onSubmit(message);
+    if (this.canSubmit(event, selectedLadders)) {
+      this.props.onSubmit(message);
+    }
   }
 
   render() {
@@ -69,7 +107,10 @@ class RegisterForm extends Component {
       <Window>
         <Caption>Register</Caption>
         <form>
-          <FormGroup controlId="formName">
+          <FormGroup
+            controlId="formName"
+            validationState={this.state.nameValidation}
+          >
             <ControlLabel>Name</ControlLabel>
             <FormControl
               type="text"
@@ -78,8 +119,15 @@ class RegisterForm extends Component {
               placeholder="Enter your name"
               onChange={event => this.updateName(event)}
             />
+            <FormControl.Feedback />
+            {this.state.nameValidation === "error" ? (
+              <HelpBlock>Enter a name of at least one character</HelpBlock>
+            ) : null}
           </FormGroup>
-          <FormGroup controlId="formId">
+          <FormGroup
+            controlId="formId"
+            validationState={this.state.idValidation}
+          >
             <ControlLabel>Membership ID</ControlLabel>
             <FormControl
               type="number"
@@ -88,8 +136,15 @@ class RegisterForm extends Component {
               placeholder="Enter your membership ID"
               onChange={event => this.updateId(event)}
             />
+            <FormControl.Feedback />
+            {this.state.idValidation === "error" ? (
+              <HelpBlock>Enter an id of length at least one</HelpBlock>
+            ) : null}
           </FormGroup>
-          <FormGroup controlId="formLadder">
+          <FormGroup
+            controlId="formLadder"
+            validationState={this.state.ladderValidation}
+          >
             <ControlLabel>Select the ladders you want to join</ControlLabel>
             {this.state.ladders.map((ladder, index) => {
               return (
@@ -102,8 +157,12 @@ class RegisterForm extends Component {
                 </Checkbox>
               );
             })}
+            <FormControl.Feedback />
+            {this.state.ladderValidation === "error" ? (
+              <HelpBlock>Select at least one ladder</HelpBlock>
+            ) : null}
           </FormGroup>
-          <Button type="submit" onClick={() => this.onSubmit()}>
+          <Button type="submit" onClick={event => this.onSubmit(event)}>
             Submit
           </Button>
         </form>
