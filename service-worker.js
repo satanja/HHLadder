@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/HHLadder/precache-manifest.9e2317fa5f1adc11721d94814eaba57a.js"
+  "/HHLadder/precache-manifest.b474b65fa2ad20b5c8bdfada88eb3e9a.js"
 );
 
 workbox.clientsClaim();
