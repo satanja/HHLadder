@@ -26,7 +26,7 @@ public class Main {
         String host = "0.0.0.0";
 
         int port = 4242;
-        WebSocketIO server = new WebSocketIO(this, new InetSocketAddress(host, port));
+        SSLServer server = new SSLServer(this, new InetSocketAddress(host, port));
 
         Thread IOThread = new Thread(io, "io");
         IOThread.start();

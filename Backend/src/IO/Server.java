@@ -12,11 +12,11 @@ import java.util.HashMap;
 import org.json.*;
 import Weapon.*;
 
-public class WebSocketIO extends WebSocketServer {
+public class Server extends WebSocketServer {
 
     private Main main;
 
-    public WebSocketIO(Main main, InetSocketAddress address) {
+    public Server(Main main, InetSocketAddress address) {
         super(address);
         this.main = main;
     }
