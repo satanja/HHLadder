@@ -145,12 +145,14 @@ class RegisterForm extends Component {
             validationState={this.state.ladderValidation}
           >
             <ControlLabel>Select the ladders you want to join</ControlLabel>
+            <br />
             {this.state.ladders.map((ladder, index) => {
               return (
                 <Checkbox
                   onChange={event => this.updateCheckbox(event)}
                   name={ladder.name}
                   key={index}
+                  inline
                 >
                   {ladder.name}
                 </Checkbox>
