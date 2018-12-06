@@ -7,7 +7,7 @@ import {
   Button
 } from "react-bootstrap";
 import styled from "styled-components";
-import { Window, Caption } from "../Components";
+import { Window, Caption, Hr } from "../Components";
 
 class MatchForm extends Component {
   constructor(props) {
@@ -128,6 +128,7 @@ class MatchForm extends Component {
                 })}
             </DropdownButton>
           </InlineFormGroup>
+          <Hr />
           <Button type="submit" onClick={() => this.onSubmit()}>
             Submit
           </Button>

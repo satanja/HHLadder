@@ -7,7 +7,7 @@ import {
   Button,
   HelpBlock
 } from "react-bootstrap";
-import { Window, Caption } from "../Components";
+import { Window, Caption, Hr } from "../Components";
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -161,6 +161,7 @@ class RegisterForm extends Component {
               <HelpBlock>Select at least one ladder</HelpBlock>
             ) : null}
           </FormGroup>
+          <Hr />
           <Button type="submit" onClick={event => this.onSubmit(event)}>
             Submit
           </Button>
