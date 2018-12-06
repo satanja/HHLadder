@@ -52,6 +52,17 @@ class MatchForm extends Component {
     }
   }
 
+  laddersIsEmpty() {
+    const selected = this.props.ladders.filter(ladder => {
+      return ladder.name === this.state.selectedLadder;
+    });
+    if (selected[0] === undefined) {
+      return true;
+    } else {
+      return selected[0].fencers.length === 0;
+    }
+  }
+
   render() {
     const ladders = this.props.ladders;
     return (
@@ -83,7 +94,12 @@ class MatchForm extends Component {
           <InlineFormGroup controlId="formWinner">
             <ControlLabel>Winner</ControlLabel>
             <br />
-            <DropdownButton bsStyle="success" title={this.state.winner} id={2}>
+            <DropdownButton
+              bsStyle="success"
+              title={this.state.winner}
+              id={2}
+              disabled={this.laddersIsEmpty()}
+            >
               {ladders
                 .filter(ladder => {
                   return ladder.name === this.state.selectedLadder;
@@ -107,7 +123,12 @@ class MatchForm extends Component {
           <InlineFormGroup controlId="formLoser">
             <ControlLabel>Loser</ControlLabel>
             <br />
-            <DropdownButton bsStyle="danger" title={this.state.loser} id={3}>
+            <DropdownButton
+              bsStyle="danger"
+              title={this.state.loser}
+              id={3}
+              disabled={this.laddersIsEmpty()}
+            >
               {ladders
                 .filter(ladder => {
                   return ladder.name === this.state.selectedLadder;
