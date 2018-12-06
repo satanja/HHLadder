@@ -6,6 +6,7 @@ import {
   MenuItem,
   Button
 } from "react-bootstrap";
+import styled from "styled-components";
 import { Window, Caption } from "../Components";
 
 class MatchForm extends Component {
@@ -56,7 +57,7 @@ class MatchForm extends Component {
     return (
       <Window>
         <form>
-          <Caption>Bout</Caption>
+          <Caption>Match result</Caption>
           <FormGroup controlId="formLadder">
             <ControlLabel>Ladder</ControlLabel>
             <br />
@@ -79,7 +80,7 @@ class MatchForm extends Component {
               })}
             </DropdownButton>
           </FormGroup>
-          <FormGroup controlId="formWinner">
+          <InlineFormGroup controlId="formWinner">
             <ControlLabel>Winner</ControlLabel>
             <br />
             <DropdownButton bsStyle="success" title={this.state.winner} id={2}>
@@ -102,8 +103,8 @@ class MatchForm extends Component {
                   });
                 })}
             </DropdownButton>
-          </FormGroup>
-          <FormGroup controlId="formLoser">
+          </InlineFormGroup>
+          <InlineFormGroup controlId="formLoser">
             <ControlLabel>Loser</ControlLabel>
             <br />
             <DropdownButton bsStyle="danger" title={this.state.loser} id={3}>
@@ -126,7 +127,7 @@ class MatchForm extends Component {
                   });
                 })}
             </DropdownButton>
-          </FormGroup>
+          </InlineFormGroup>
           <Button type="submit" onClick={() => this.onSubmit()}>
             Submit
           </Button>
@@ -135,6 +136,11 @@ class MatchForm extends Component {
     );
   }
 }
+
+const InlineFormGroup = styled(FormGroup)`
+  display: inline-block;
+  width: 50%;
+`;
 
 const CustomMenuItem = props => {
   const { selected, eventKey, key, onSelect } = props;
