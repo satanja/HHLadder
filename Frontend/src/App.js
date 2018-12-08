@@ -28,7 +28,9 @@ class App extends Component {
   }
 
   onConnectionClose(event) {
-    console.log("Closed");
+    setTimeout(() => {
+      this.connect();
+    }, 500);
   }
 
   onConnectionError(event) {
