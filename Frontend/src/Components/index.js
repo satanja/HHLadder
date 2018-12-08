@@ -13,8 +13,16 @@ const Window = styled.div`
   margin-top: 2rem;
 `;
 
+const ErrorWindow = styled(Window)`
+  background-color: #ff5454;
+`;
+
+const WarningWindow = styled(Window)`
+  background-color: #ffa15e;
+`;
+
 const Hr = styled.hr`
   margin-top: 0;
   margin-bottom: 1rem;
 `;
-export { Caption, Window, Hr };
+export { Caption, Window, Hr, ErrorWindow, WarningWindow };
