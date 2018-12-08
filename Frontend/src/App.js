@@ -3,12 +3,14 @@ import React, { Component } from "react";
 import Ladder from "./Ladder";
 import RegisterForm from "./RegisterForm";
 import MatchForm from "./MatchForm";
+import ConnectionBar from "./ConnectionBar";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ladders: []
+      ladders: [],
+      status: ""
     };
     this.connection = null;
     this.connect();
@@ -30,7 +32,7 @@ class App extends Component {
   }
 
   onConnectionError(event) {
-    console.log("Error");
+    this.setState({ status: "error" });
   }
 
   onConnectionMessage(event) {
@@ -42,7 +44,7 @@ class App extends Component {
   }
 
   onConnectionOpen(event) {
-    console.log("Connected");
+    this.setState({ status: "success" });
     this.getLadders();
   }
 
@@ -61,6 +63,7 @@ class App extends Component {
     const ladders = this.state.ladders;
     return (
       <div>
+        <ConnectionBar status={this.state.status} />
         {ladders.length === 0 ? null : (
           <div>
             <RegisterForm
